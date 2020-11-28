@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container my-3">
+    <div class="text-center">
+        <h2><u>Custom Users</u></h2>
+    </div>
+    <div class="row my-4">
+        <div class="col-md-4">
+            <div class="text-center">
+                <h5>Create Super User</h5>
+            </div>
+            <form action="create_superuser" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username1">User Name</label>
+                    <input required type="text" class="form-control" name="username1" id="username1">
+                </div>
+                <div class="form-group">
+                    <label for="email1">Email address</label>
+                    <input required type="email" class="form-control" name="email1" id="email1" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input required type="password" class="form-control" name="password1" id="password1">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <h5>Create Admin User</h5>
+            </div>
+            <form action="create_adminuser" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username2">User Name</label>
+                    <input required type="text" class="form-control" name="username2" id="username2">
+                </div>
+                <div class="form-group">
+                    <label for="email2">Email address</label>
+                    <input required type="email" class="form-control" name="email2" id="email2" aria-describedby="emailHelp1">
+                    <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password2">Password</label>
+                    <input required type="password" class="form-control" name="password2" id="password2">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <h5>Create Normal User</h5>
+            </div>
+            <form action="create_normaluser" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username3">User Name</label>
+                    <input required type="text" class="form-control" name="username3" id="username3">
+                </div>
+                <div class="form-group">
+                    <label for="email3">Email address</label>
+                    <input required type="email" class="form-control" name="email3" id="email3" aria-describedby="emailHelp2">
+                    <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password3">Password</label>
+                    <input required type="password" class="form-control" name="password3" id="password3">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock body %}
