@@ -43,6 +43,25 @@ def create_normaluser(request):
         email3 = request.POST['email3']
         password3 = request.POST['password3']
         User.objects.create_user(username3,email3,password3).save()
+        
+        # Push Notification Functionality Start
+        import requests
+        import json
+
+        header = {"Content-Type": "application/json; charset=utf-8",
+          "Authorization": "Basic MDQwMzgzYTgtNDM5My00YTQwLWI0MTUtNTI0ZWViOTkzZWRm"}
+
+        payload = {"app_id": "b7a3f46c-d540-43d9-9b4c-fc3b31a95b83",
+           "included_segments": ["Subscribed Users"],
+           "headings": {"en": "Congratulations!!!"},
+           "contents": {"en": "New User "+username3+" Registered"}
+           }
+ 
+        req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
+ 
+        print(req.status_code, req.reason)
+
+        
         messages.success(request,"NormalUser Created Successfully")
         return redirect('/')
     else:

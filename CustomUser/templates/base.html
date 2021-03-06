@@ -11,6 +11,17 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <title>Custom Users</title>
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function () {
+            OneSignal.init({
+                appId: "b7a3f46c-d540-43d9-9b4c-fc3b31a95b83",
+            });
+        });
+    </script>
+
 </head>
 
 <body>
@@ -81,3 +92,31 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+    OneSignal.push(function () {
+        /* These examples are all valid */
+        var isPushSupported = OneSignal.isPushNotificationsSupported();
+        if (isPushSupported) {
+            // Push notifications are supported
+            console.log("supported");
+            OneSignal.isPushNotificationsEnabled(function (isEnabled) {
+                if (isEnabled) {
+                    console.log("Push notifications are enabled!");
+                    OneSignal.getUserId(function (userId) {
+                        console.log("OneSignal User ID:", userId);
+                        // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
+                    });
+                }
+                else
+                    console.log("Push notifications are not enabled yet.");
+                OneSignal.push(function () {
+                    OneSignal.showHttpPrompt();
+                });
+            });
+        } else {
+            // Push notifications are not supported
+            console.log("Not supported");
+        }
+    });
+</script>
