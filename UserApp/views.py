@@ -51,8 +51,3 @@ def create_normaluser(request):
         return redirect('/')
     else:
         return HttpResponse("<h1>404 - Not Found</h1>")
-
-
-# user  superuser
-# email  superuser@gmail.com
-# pass  superuser
